@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>vacations</title>
+    <link href='https://fonts.googleapis.com./css?family=Nova Flat' rel='stylesheet'>
+    
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <link rel="stylesheet" type="text/css" src="stylesheets/mycss.css">
+
+</head>
+<body>
+    
+<!-- ================================================================================ -->
+<!-- ===========================HOME===================================================== -->
+<!-- ================================================================================ -->
+
+<div data-role="page" id="home">
+    <!-- page header -->
+    <div data-role="header" data-theme='a'>
+        <h1>My Vacations List</h1>
+        <div data-role="navbar" data-theme='b'>
+            <ul>
+                <li><a href="#home">Home Page</a></li>
+                <li><a href="#Load">Add Destination</a></li>
+                <li><a href="#ListAll">List Destinations</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div>
+
+
+    <!-- page content -->
+    <div data-role="content" data-theme='b'>
+        <div class="newFont">
+        <h2><center>Destination Plans</center></h2>
+        <center><img src="images/vacationpic.png" alt="vacationtime" width="500" height="345"></center>
+    </div>
+</div>
+
+
+
+    <!-- page footer -->
+    <div data-role="footer" data-theme='b'>
+        <h3>Copyrigtht 2021 by Kurt Friedrich</h3>
+    </div>
+</div>
+
+<!-- ================Start of page================================ -->
+
+<div data-role="page" id="details">
+  
+    <!-- page header -->
+<div data-role="header" data-theme='a'>
+        <h1>Destination details</h1>
+        <div data-role="navbar" data-theme='b'>
+            <ul>
+                <li><a href="#home">Home Page</a></li>
+                <li><a href="#Load">Add Destination</a></li>
+                <li><a href="#ListAll">List Destinations</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div>
+
+<!-- Content -->
+<div data-role="content" data-theme='c'>
+    <p>Destination Details</p>
+    <p id="oneCity"></p>
+    <p id="oneState"></p>
+    <p id="oneCountry"></p>
+    <p id="oneType"></p>
+    <p id="oneVideo" hidden></p>
+<input type="button" value="Click here to view your destination's live EarthCam" id="eCam" />
+</div>
+
+<!-- page footer -->
+<div data-role="footer" data-theme='b'>
+    <h1>Copyrigtht 2021 by Kurt Friedrich</h1>
+</div>
+</div>
+
+
+<!-- ================Start of page================================ -->
+
+<div data-role="page" id="Load">
+    <!-- page header -->
+    <div data-role="header" data-theme='a'>
+        <h1>Add Destination</h1>
+        <div data-role="navbar" data-theme='b'>
+            <ul>
+                <li><a href="#home">Home Page</a></li>
+                <li><a href="#Load">Add Destination</a></li>
+                <li><a href="#ListAll">List Destinations</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div>
+
+
+
+    <!-- page content -->
+    <div data-role="content" data-theme='c'>
+        <h2>Enter a new destination</h2> 
+        Enter a city <br />
+        <input type="text" value="" id="city" />
+        Enter a state <br />
+        <input type="text" value="" id="state" />
+         Enter a country<br />
+        <input type="text" value="" id="country" />
+    
+        <div class="ui-field-contain">
+        <label for="select-type">Select a destination type</label>
+        <select name="select-type" id="select-type">
+            <option value="Resort">Resort</option>
+            <option value="Amusement park">Amusement park</option>
+            <option value="Gaming facility">Gaming facility</option>
+            <option value="Shopping">Shopping site</option>
+            <option value="Museum/historical site">Museum/historical site</option>
+            <option value="National park">National park</option>
+            <option value="Cruise ship">Cruise ship</option>
+            <option value="Sports/recreation/entertainment facility">Sports/recreation/entertainment facility</option>
+            <option value="Undetermined">Undetermined</option>
+        
+        </select>
+        </div>
+        
+        <input type="button" value="Click To Add Destination" id="buttonAdd" data-inline="true" />
+        <input type="button" value="Clear Data" id="buttonClear" data-inline="true" />
+    </div>
+
+
+
+    <!-- vacations footer -->
+    <div data-role="footer" data-theme='b'>
+        <h1>Copyrigtht 2021 by Kurt Friedrich</h1>
+    </div>
+</div>
+
+<!-- -------- End of page  ---------->
+
+
+<!-------------------------  Star of page  -------------------------->
+
+<div data-role="page" id="ListAll">
+  
+    <!-- header -->
+    <div data-role="header" data-theme='a'>
+        <h1>My Planned Vacations</h1>
+        <div data-role="navbar" data-theme='b'>
+            <ul>
+                <li><a href="#home">Home Page</a></li>
+                <li><a href="#Load">Add Destination</a></li>
+               
+            </ul>
+        </div><!-- /navbar -->
+    
+
+
+    <!-- content -->
+    <div data-role="content" data-theme='e'>
+        <p>My vacation plans:</p>
+
+        <div id="divVacationList">
+            <ul id="myul"></ul>
+            </div>
+            <input type="button" value="Sort By City" id="buttonSortCity" data-inline="true" />
+            <input type="button" value="Sort By State" id="buttonSortState" data-inline="true" />
+            <input type="button" value="Sort By Country" id="buttonSortCountry" data-inline="true" />
+        </div>
+       
+    
+    <!-- vacations footer -->
+    <div data-role="footer" data-theme='b'>
+        <h3>Copyrigtht 2021 by Kurt Friedrich</h3>
+    </div>
+</div>
+</div>
+
+
+</body>
+
+</html>
