@@ -12,10 +12,10 @@ let VacationObject = function (pID, pCity, pState, pCountry, pType, pVideo) {
     this.Video = pVideo;
 }
 
-vacayArray.push(new VacationObject("1", "Seattle", "Washington", "USA", "Resort","https://www.earthcam.com/usa/washington/seattle/?cam=seattleskyline"));
-vacayArray.push(new VacationObject("2", "London", "England", "UK", "Museum/historical site","https://www.earthcam.com/world/england/london/abbeyroad/?cam=abbeyroad_uk"));
-vacayArray.push(new VacationObject("3", "Sedona", "Arizona", "USA","Shopping site","https://www.earthcam.com/usa/arizona/sedona/?cam=sedona_gateway"));
-vacayArray.push(new VacationObject("4", "Toronto", "Ontario", "Canada","Undetermined","https://www.earthcam.com/world/canada/toronto/cntower/?cam=cntower1"));
+// vacayArray.push(new VacationObject("1", "Seattle", "Washington", "USA", "Resort","https://www.earthcam.com/usa/washington/seattle/?cam=seattleskyline"));
+// vacayArray.push(new VacationObject("2", "London", "England", "UK", "Museum/historical site","https://www.earthcam.com/world/england/london/abbeyroad/?cam=abbeyroad_uk"));
+// vacayArray.push(new VacationObject("3", "Sedona", "Arizona", "USA","Shopping site","https://www.earthcam.com/usa/arizona/sedona/?cam=sedona_gateway"));
+// vacayArray.push(new VacationObject("4", "Toronto", "Ontario", "Canada","Undetermined","https://www.earthcam.com/world/canada/toronto/cntower/?cam=cntower1"));
 
 
 let selectedType = "not selected";
@@ -27,11 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // add button events ***********************************************************************************
    
     document.getElementById("buttonAdd").addEventListener("click", function () {
+ 
+        // vacayArray.push(new VacationObject( document.getElementById("ID").value, document.getElementById("City").value, document.getElementById("State").value, document.getElementById("Country").value, selectedType));
+        // document.location.href = "index.html#ListAll";
 
-        vacayArray.push(new VacationObject(document.getElementById("city").value, document.getElementById("state").value, document.getElementById("country").value, selectedType));
-        document.location.href = "index.html#ListAll";
-
-    });
+        });
+    
         
         document.getElementById("buttonClear").addEventListener("click", function () {
             document.getElementById("city").value = "";
@@ -75,23 +76,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // page before show code *********************************************************************
 
-        // $(document).on("pagebeforeshow", "#ListAll", function (event) {
-        //     createList();
-        // });
+        $(document).on("pagebeforeshow", "#ListAll", function (event) {
+            createList();
+        });
 
-        // let newVacation = new Vacation(document.getElementById("ID").value, document.getElementById("City").value, 
-        //    document.getElementById("State").value, document.getElementById("Country").value,
-        //    document.getElementById("Type").value );
+    //     let newVacation = new Vacation( document.getElementById("ID").value, document.getElementById("City").value, document.getElementById("State").value, document.getElementById("Country").value, selectedType);
 
-        // $.ajax({
-        //     url : "/AddVacation",
-        //     type: "POST",
-        //     data: JSON.stringify(newVacation),
-        //     contentType: "application/json; charset=utf-8",
-        //      success: function (result) {
-        //         console.log(result);
-        //     }
-        // });
+    //     $.ajax({
+    //         url : "/AddVacation",
+    //         type: "POST",
+    //         data: JSON.stringify(newVacation),
+    //         contentType: "application/json; charset=utf-8",
+    //          success: function (result) {
+    //             console.log(result);
+    //         }
+    // });
 
         
         
@@ -111,8 +110,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
     //end of page before show code
+    $.get("/getAllvacayArray", function(data, status){  // AJAX get
+        vacayArray = data;  // put the returned server json data into our local array
 });
 //end of code that must wait until document has loaded event
+
+
 
 
     function createList() {
@@ -146,9 +149,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     };
-        
+           
     // $.get("/getAllvacayArray", function(data, status){  // AJAX get
     //     vacayArray = data;  // put the returned server json data into our local array
+    
 
         function dynamicSort(property) {
             var sortOrder = 1;
@@ -166,7 +170,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
             }
-    
-    
+   })    
 
-  
+          
