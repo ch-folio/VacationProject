@@ -28,10 +28,19 @@ document.addEventListener("DOMContentLoaded", function () {
    
     document.getElementById("buttonAdd").addEventListener("click", function () {
  
-        // vacayArray.push(new VacationObject( document.getElementById("ID").value, document.getElementById("City").value, document.getElementById("State").value, document.getElementById("Country").value, selectedType));
-        // document.location.href = "index.html#ListAll";
+     let newVacation = new Vacation( document.getElementById("ID").value, document.getElementById("City").value, document.getElementById("State").value, document.getElementById("Country").value, selectedType);
 
-        });
+        $.ajax({
+            url : "/AddVacation",
+            type: "POST",
+            data: JSON.stringify(newVacation),
+            contentType: "application/json; charset=utf-8",
+             success: function (result) {
+                console.log(result);
+            } 
+            
+        })
+    });
     
         
         document.getElementById("buttonClear").addEventListener("click", function () {
@@ -70,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById("eCam").addEventListener("click", function () {
             window.open(document.getElementById("oneVideo").innerHTML);
+
         });
         // end of add button events ******************************************************************
 
@@ -79,18 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
         $(document).on("pagebeforeshow", "#ListAll", function (event) {
             createList();
         });
-
-    //     let newVacation = new Vacation( document.getElementById("ID").value, document.getElementById("City").value, document.getElementById("State").value, document.getElementById("Country").value, selectedType);
-
-    //     $.ajax({
-    //         url : "/AddVacation",
-    //         type: "POST",
-    //         data: JSON.stringify(newVacation),
-    //         contentType: "application/json; charset=utf-8",
-    //          success: function (result) {
-    //             console.log(result);
-    //         }
-    // });
 
         
         
@@ -107,15 +105,13 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("oneCountry").innerHTML = "The country is: " + vacayArray[localID - 1].Country;
         document.getElementById("oneType").innerHTML = "Destination type: " + vacayArray[localID - 1].Type;
         document.getElementById("oneVideo").innerHTML = vacayArray[localID - 1].Video;
-    });
+    });  
     
-    //end of page before show code
-    $.get("/getAllvacayArray", function(data, status){  // AJAX get
-        vacayArray = data;  // put the returned server json data into our local array
 });
+
 //end of code that must wait until document has loaded event
 
-
+  //end of page before show code
 
 
     function createList() {
@@ -147,11 +143,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem('vacayArray', stringVacayArray);
                 document.location.href = "index.html#details";
             });
+           
         });
     };
-           
-    // $.get("/getAllvacayArray", function(data, status){  // AJAX get
-    //     vacayArray = data;  // put the returned server json data into our local array
+        
     
 
         function dynamicSort(property) {
@@ -170,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
             }
-   })    
-
-          
+            $.get("/getAllvacayArray", function(data, status){  // AJAX get
+                vacayArray = data;  // put the returned server json data into our local array
+            })
+   

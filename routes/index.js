@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-let ServervacayArray = [];
-
 // define a constructor to create vacation objects
 let VacationObject = function (pID, pCity, pState, pCountry, pType, pVideo) {
   this.ID = pID;
@@ -13,6 +11,8 @@ let VacationObject = function (pID, pCity, pState, pCountry, pType, pVideo) {
   this.Type = pType;
   this.Video = pVideo;
 }
+
+let ServervacayArray = [];
 
 ServervacayArray.push(new VacationObject("x1", "xSeattle", "Washington", "USA", "Resort", "https://www.earthcam.com/usa/washington/seattle/?cam=seattleskyline" ));
 ServervacayArray.push(new VacationObject("x2", "xLondon", "England", "UK", "Museum/historical site", "https://www.earthcam.com/world/england/london/abbeyroad/?cam=abbeyroad_uk"));
@@ -46,6 +46,3 @@ router.post('/AddVacation', function(req, res) {
 });
 
 module.exports = router;
-
-
-
