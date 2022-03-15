@@ -27,11 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // add button events ***********************************************************************************
    
     document.getElementById("buttonAdd").addEventListener("click", function () {
+       
+     let newID = Math.random().toString(16).slice(5) 
  
-     let newVacation = new Vacation( document.getElementById("ID").value, document.getElementById("City").value, document.getElementById("State").value, document.getElementById("Country").value, selectedType);
+     let newVacation = new VacationObject( newID, document.getElementById("city").value, document.getElementById("state").value, document.getElementById("country").value, selectedType);
 
         $.ajax({
-            url : "/AddVacation",
+            url : '/AddVacation',
             type: "POST",
             data: JSON.stringify(newVacation),
             contentType: "application/json; charset=utf-8",
