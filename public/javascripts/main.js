@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // add button events ***********************************************************************************
    
     document.getElementById("buttonAdd").addEventListener("click", function () {
-       
+    
      let newID = Math.random().toString(16).slice(5) 
- 
+     
      let newVacation = new VacationObject( newID, document.getElementById("city").value, document.getElementById("state").value, document.getElementById("country").value, selectedType);
 
         $.ajax({
@@ -39,9 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
             contentType: "application/json; charset=utf-8",
              success: function (result) {
                 console.log(result);
+                
             } 
-            
         })
+        location.reload();
+        
     });
     
         
@@ -107,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("oneCountry").innerHTML = "The country is: " + vacayArray[localID - 1].Country;
         document.getElementById("oneType").innerHTML = "Destination type: " + vacayArray[localID - 1].Type;
         document.getElementById("oneVideo").innerHTML = vacayArray[localID - 1].Video;
-    });  
+    });      
     
 });
 

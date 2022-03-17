@@ -1,0 +1,17 @@
+// define a constructor to create vacation objects
+let VacationObject = function (pID, pCity, pState, pCountry, pType, pVideo) {
+  this.ID = pID;
+  this.City = pCity;
+  this.State = pState;
+  this.Country = pCountry;
+  this.ID = ServervacayArray.length +1;
+  this.Type = pType;
+  this.Video = pVideo;
+}
+
+let ServervacayArray = [];
+
+ServervacayArray.push(new VacationObject("x1", "xSeattle", "Washington", "USA", "Resort", "https://www.earthcam.com/usa/washington/seattle/?cam=seattleskyline" ));
+ServervacayArray.push(new VacationObject("x2", "xLondon", "England", "UK", "Museum/historical site", "https://www.earthcam.com/world/england/london/abbeyroad/?cam=abbeyroad_uk"));
+ServervacayArray.push(new VacationObject("x3", "xSedona", "Arizona", "USA","Shopping site", "https://www.earthcam.com/usa/arizona/sedona/?cam=sedona_gateway"));
+ServervacayArray.push(new VacationObject("x4", "xToronto", "Ontario", "Canada","Undetermined", "https://www.earthcam.com/world/canada/toronto/cntower/?cam=cntower1"));
